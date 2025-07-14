@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:podcast/constant/my_colors.dart';
+import 'package:podcast/constant/my_strings.dart';
 import 'package:podcast/gen/assets.gen.dart';
 import 'package:podcast/widget/poster_section.dart';
 
@@ -25,6 +26,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          spacing: 28,
           children: [
             PosterSection(size: size, theme: theme),
             SizedBox(
@@ -63,6 +65,96 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: bodyMargin),
+              child: Row(
+                spacing: 5,
+                children: [
+                  ImageIcon(
+                    Assets.icon.bluePen.provider(),
+                    color: SolidColors.seeMore,
+                    size: 18,
+                  ),
+                  Text(MyStrings.viewHotestBlog, style: theme.displaySmall),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: size.height / 4.1,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      right: index == 0 ? bodyMargin : 15,
+                    ),
+                    child: Column(
+                      spacing: 5,
+                      children: [
+                        SizedBox(
+                          height: size.height / 5.3,
+                          width: size.width / 2.5,
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  image: DecorationImage(
+                                    image: Assets.img.logo.provider(),
+                                  ),
+                                ),
+                                foregroundDecoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  gradient: LinearGradient(
+                                    colors: GradientColors.blogPost,
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.topCenter,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                left: 0,
+                                right: 0,
+                                bottom: 2,
+
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      'ملیکا عزیزی',
+                                      style: theme.titleMedium,
+                                    ),
+                                    Row(
+                                      spacing: 3,
+                                      children: [
+                                        Text('251', style: theme.titleMedium),
+                                        Icon(
+                                          Icons.remove_red_eye_sharp,
+                                          size: 17,
+                                          color: SolidColors.scaffoladBg,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 2.5,
+                          child: Text(
+                            'سلام خوبی منم خوبم این یک متن تستی هستش',
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 },

@@ -48,8 +48,12 @@ class PosterSection extends StatelessWidget {
                   Row(
                     spacing: 3,
                     children: [
-                      Text('view', style: theme.titleMedium),
-                      Icon(Icons.remove_red_eye_sharp, size: 17),
+                      Text('251', style: theme.titleMedium),
+                      Icon(
+                        Icons.remove_red_eye_sharp,
+                        size: 17,
+                        color: SolidColors.scaffoladBg,
+                      ),
                     ],
                   ),
                 ],
